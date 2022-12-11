@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Engine Detection App</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add some styles for the app here */
+  </style>
+</head>
+<body>
+  <h1>Search Engine Detection App</h1>
+  <p>Enter some text in the input field below and the app will detect if it was copied from a search engine.</p>
+  <input type="text" id="text-input" />
+  <button id="detect-button">Detect</button>
+  <p id="detection-result"></p>
+  <script>
+    // Get references to the input field and the detect button
+    const inputField = document.getElementById('text-input');
+    const detectButton = document.getElementById('detect-button');
+    const detectionResult = document.getElementById('detection-result');
+
+    // Add a click event listener to the detect button
+    detectButton.addEventListener('click', () => {
+      // Get the value of the input field
+      const inputValue = inputField.value;
+
+      // Check if the input value matches the pattern of a search engine result
+      const isFromSearchEngine = /^[^-]* - /.test(inputValue);
+
+      // Update the detection result paragraph
+      if (isFromSearchEngine) {
+        detectionResult.innerText = 'The text was copied from a search engine';
+      } else {
+        detectionResult.innerText = 'The text was not copied from a search engine';
+      }
+    });
+  </script>
+</body>
+</html>
